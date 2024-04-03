@@ -91,9 +91,9 @@ function iniciarCompra() {
     let carrito = mostrarMenuProductos();
     let direccionEnvio = obtenerDireccionEnvio();
     let totalProductos = carrito.reduce((acc, producto) => acc + producto.precio, 0);
-    let costoEnvio = Math.floor(Math.random() * (20 - 10 + 1)) + 10; // Número aleatorio entre 10 y 20
+    let costoEnvio = Math.floor(Math.random() * (20 - 10 + 1)) + 10; // numero aleatorio entre 10 y 20
     let totalConEnvio = totalProductos + costoEnvio;
-    let correoUsuario = realizarCobro(totalConEnvio); // 
+    let correoUsuario = realizarCobro(totalConEnvio);  
 }
 
 // iniciar el proceso de compra
