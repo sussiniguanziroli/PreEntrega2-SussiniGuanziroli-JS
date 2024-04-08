@@ -25,20 +25,23 @@ function mostrarMenuProductos() {
         new Producto("Red de pesca", "Red", 20)
     ];
 
-    productos.forEach((producto, index) => {
-        console.log((index + 1) + ". " + producto.nombre + " - Tipo: " + producto.tipo + ", Precio: $" + producto.precio);
+    console.log("Productos disponibles:");
+    productos.forEach(producto => {
+        console.log(`${producto.nombre} - Precio: $${producto.precio}`);
     });
 
     while (true) {
-        let opcion = parseInt(prompt("Ingrese el número del producto que desea agregar al carrito (o ingrese '0' para finalizar la compra):"));
-        if (opcion === 0) {
+        let nombreProducto = prompt("Ingrese el nombre del producto que desea agregar al carrito (o ingrese 'fin' para finalizar la compra):");
+        if (nombreProducto.toLowerCase() === 'fin') {
             break;
-        } else if (opcion >= 1 && opcion <= productos.length) {
-            let productoElegido = productos[opcion - 1];
-            carrito.push({ nombre: productoElegido.nombre, tipo: productoElegido.tipo, precio: productoElegido.precio });
-            console.log("¡Ha agregado \"" + productoElegido.nombre + "\" al carrito!");
         } else {
-            console.log("Opción inválida. Por favor, ingrese un número válido.");
+            let productoEncontrado = productos.find(producto => producto.nombre.toLowerCase() === nombreProducto.toLowerCase());
+            if (productoEncontrado) {
+                carrito.push({ nombre: productoEncontrado.nombre, tipo: productoEncontrado.tipo, precio: productoEncontrado.precio });
+                console.log("¡Ha agregado \"" + productoEncontrado.nombre + "\" al carrito!");
+            } else {
+                console.log("Producto no encontrado. Por favor, ingrese un nombre de producto válido.");
+            }
         }
     }
 
